@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:qr_app/Screens/app_bar.dart';
 
-class Generator extends StatefulWidget {
-  const Generator({Key? key}) : super(key: key);
+class Scan extends StatefulWidget {
+  const Scan({Key? key}) : super(key: key);
 
   @override
   _GeneratorState createState() => _GeneratorState();
 }
 
-class _GeneratorState extends State<Generator> {
+class _GeneratorState extends State<Scan> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -20,8 +20,8 @@ class _GeneratorState extends State<Generator> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: const [
           appBar(
-            title: "Generate QR",
-            desc: "Generate with ease!!",
+            title: "Scan QR",
+            desc: "Scan with ease!!",
           )
         ],
       )),
