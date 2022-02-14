@@ -38,8 +38,7 @@ SafeArea HomeScreen(BuildContext context) {
                           image: DecorationImage(
                               colorFilter: ColorFilter.mode(
                                   Colors.black54, BlendMode.darken),
-                              image: NetworkImage(
-                                  "https://images.unsplash.com/photo-1613388395752-a4f8730271e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1631&q=80"),
+                              image: AssetImage("assets/images/gener.png"),
                               fit: BoxFit.cover),
                           borderRadius: BorderRadius.circular(12),
                         ),
@@ -74,8 +73,7 @@ SafeArea HomeScreen(BuildContext context) {
                             image: DecorationImage(
                                 colorFilter: ColorFilter.mode(
                                     Colors.black54, BlendMode.darken),
-                                image: NetworkImage(
-                                    "https://images.unsplash.com/photo-1559131397-f94da358f7ca?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cXIlMjBjb2RlfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60"),
+                                image: AssetImage("assets/images/scan.png"),
                                 fit: BoxFit.cover),
                             borderRadius: BorderRadius.circular(12),
                           ),
