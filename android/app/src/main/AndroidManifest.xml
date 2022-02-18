@@ -2,7 +2,7 @@
     package="com.example.qr_app">
     <uses-permission android:name="android.permission.VIBRATE" />
    <application
-        android:label="qr_app"
+        android:label="QRiky"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

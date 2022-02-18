@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:qr_app/Screens/app_bar.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:share_plus/share_plus.dart';
@@ -35,14 +34,9 @@ class _GeneratorState extends State<Generator> {
                   ),
                   InkWell(
                     onLongPress: () async {
-                      final temp = await getTemporaryDirectory();
-                      final path = '${temp.path}/qr.jpg';
-
-                      await Share.shareFiles([path],
-                          text: 'Check out this QR!');
+                      await Share.share('Check out this QR!');
                     },
                     child: QrImage(
-                      embeddedImage: NetworkImage('assets/images/splscrr.png'),
                       data: _qrcontroller.text,
                       size: 300,
                     ),
