@@ -88,7 +88,7 @@ class _GeneratorState extends State<Scan> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            barcode != null ? "Result: ${barcode!.code}" : "Scan a code!",
+            barcode != null ? "Result: ${barcode!.code}": "Scan a code!",
             maxLines: 3,
             style: TextStyle(color: Colors.white),
           ),

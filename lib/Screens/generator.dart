@@ -22,57 +22,64 @@ class _GeneratorState extends State<Generator> {
     return SafeArea(
       child: Scaffold(
           // ignore: prefer_const_literals_to_create_immutables
-          body: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                InkWell(
-                  onLongPress: () async {
-                    final temp = await getTemporaryDirectory();
-                    final path = '${temp.path}/qr.jpg';
+          body: SingleChildScrollView(
+        physics: ScrollPhysics(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 105,
+                  ),
+                  InkWell(
+                    onLongPress: () async {
+                      final temp = await getTemporaryDirectory();
+                      final path = '${temp.path}/qr.jpg';
 
-                    await Share.shareFiles([path], text: 'Check out this QR!');
-                  },
-                  child: QrImage(
-                    embeddedImage: NetworkImage('assets/images/splscrr.png'),
-                    data: _qrcontroller.text,
-                    size: 300,
+                      await Share.shareFiles([path],
+                          text: 'Check out this QR!');
+                    },
+                    child: QrImage(
+                      embeddedImage: NetworkImage('assets/images/splscrr.png'),
+                      data: _qrcontroller.text,
+                      size: 300,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 80,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15.0),
-                  child: TextField(
-                    textAlign: TextAlign.center,
-                    controller: _qrcontroller,
-                    decoration: InputDecoration(
-                        suffixIcon: InkWell(
-                          onTap: () {
-                            Clipboard.setData(ClipboardData());
-                            HapticFeedback.heavyImpact();
-                            setState(() {});
-                          },
-                          child: Icon(Icons.done),
-                        ),
-                        hintText: "Enter the data",
-                        hintStyle: TextStyle(color: Colors.grey)),
+                  SizedBox(
+                    height: 80,
                   ),
-                ),
-                SizedBox(
-                  height: 80,
-                ),
-              ],
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15.0),
+                    child: TextField(
+                      textAlign: TextAlign.center,
+                      controller: _qrcontroller,
+                      decoration: InputDecoration(
+                          suffixIcon: InkWell(
+                            onTap: () {
+                              Clipboard.setData(ClipboardData());
+                              HapticFeedback.heavyImpact();
+                              setState(() {});
+                            },
+                            child: Icon(Icons.done),
+                          ),
+                          hintText: "Enter the data",
+                          hintStyle: TextStyle(color: Colors.grey)),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 80,
+                  ),
+                ],
+              ),
             ),
-          ),
-          appBar(
-            title: "Generate QR",
-            desc: "Generate with ease!!",
-          ),
-        ],
+            appBar(
+              title: "Generate QR",
+              desc: "Generate with ease!!",
+            ),
+          ],
+        ),
       )),
     );
   }
