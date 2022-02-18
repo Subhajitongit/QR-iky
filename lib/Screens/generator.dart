@@ -1,8 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:qr_app/Screens/app_bar.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:flutter/services.dart';
 
 class Generator extends StatefulWidget {
   const Generator({Key? key}) : super(key: key);
@@ -25,9 +28,18 @@ class _GeneratorState extends State<Generator> {
           SingleChildScrollView(
             child: Column(
               children: [
-                QrImage(
-                  data: _qrcontroller.text,
-                  size: 300,
+                InkWell(
+                  onLongPress: () async {
+                    final temp = await getTemporaryDirectory();
+                    final path = '${temp.path}/qr.jpg';
+
+                    await Share.shareFiles([path], text: 'Check out this QR!');
+                  },
+                  child: QrImage(
+                    embeddedImage: NetworkImage('assets/images/splscrr.png'),
+                    data: _qrcontroller.text,
+                    size: 300,
+                  ),
                 ),
                 SizedBox(
                   height: 80,
@@ -40,6 +52,8 @@ class _GeneratorState extends State<Generator> {
                     decoration: InputDecoration(
                         suffixIcon: InkWell(
                           onTap: () {
+                            Clipboard.setData(ClipboardData());
+                            HapticFeedback.heavyImpact();
                             setState(() {});
                           },
                           child: Icon(Icons.done),
